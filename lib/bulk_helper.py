@@ -4,6 +4,8 @@
 import logging
 
 import os
+# import shutil
+
 from lib.check_helper import quickxorhash
 from beartype import beartype
 from lib.graph_helper import MsGraphClient
@@ -189,6 +191,10 @@ def mupload_folder(
           lg.info(f"[mupload_folder]Upload file {entry.path}")
           mgc.put_file_content(
               ms_folder.path, f"{src_path}/{entry.name}")
+        # move_path = src_path.replace('C:\\Temp\\FILES TO BE UPLOADED\\', 'C:\\Temp\\FILES UPLOADED\\')
+        # os.makedirs(move_path, exist_ok=True)
+        # lg.info("Move file %s to %s since upload confirmed.", os.path.join(src_path, entry.name), os.path.join(move_path, entry.name))
+        # shutil.move(os.path.join(src_path, entry.name), os.path.join(move_path, entry.name))
 
     elif entry.is_dir():
 
